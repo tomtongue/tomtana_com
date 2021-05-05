@@ -1,2 +1,2 @@
-const withNextra = require('nextra')('nextra-theme-blog', './theme.config.js')
-module.exports = withNextra()
+const withCustomNextra = require('nextra')('./custom/nextra-custom-theme-blog','./theme.config.js')
+module.exports = withCustomNextra()

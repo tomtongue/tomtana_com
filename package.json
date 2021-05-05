@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "gray-matter": "^4.0.2",
-    "next": "latest",
+    "next": "^10.2.0",
     "nextra": "^0.4.4",
     "nextra-theme-blog": "^0.1.5",
     "react": "^17.0.2",

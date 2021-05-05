@@ -63,3 +63,27 @@ img.next-image {
 .nav-line .nav-link {
   color: #69778c;
 }
+
+/* --- Custom --- */
+.md\:prose pre {
+  background-color: whitesmoke;
+}
+
+.md\:prose {
+  max-width: 80ch;
+  font-size: 110%;
+}
+
+/* blog post titles animated underline */
+a.post-item-title {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+a.post-item-title:hover, a.post-item-title:focus {
+    background-size: 100% 2px;
+}
