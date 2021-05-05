@@ -19,7 +19,7 @@ author: tomtan@
 **Join**とは2つのData-set (*Left*と*Right*)における、1つ以上の**Key**を比較し、それぞれのデータを合わせることである。よく知られるJoin expressionとしては**Equi Join**がある。これはLeft-sideおよびRight-sideにおけるKeyを比較し、等しいものを合わせ、異なるKeyを含むRowは捨てるといったものである。SparkではEqui Join以外のJoinもサポートしており、それらについては以下に記載する。
 
 ## 1. DataFrame Join Types
-![](/blog/2019-09-05-spark-joins/join_operations.png)
+![](/imgs/spark-joins/join_operations.png)
 
 1. [Inner Joins](#1-1-inner-joins)
 2. [Outer Joins](#1-2-outer-joins)

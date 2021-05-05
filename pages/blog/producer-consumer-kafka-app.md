@@ -33,7 +33,7 @@ $ mvm -version
 ## 1. Initial setup
 今回はProducer/Consumerとも同じApp directoryを使用するため、共通のpackage設定を行っておく。
 
-```
+```text
 $ mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes \
 -DarchetypeArtifactId=maven-archetype-simple -DgroupId=com.tomtongue.sample.kafkaapp \
 -DartifactId=kafkaSampleApp \
@@ -99,8 +99,8 @@ kafkaSampleApp
 ### Using InterlliJ IDEA
 InterlliJでもproject作成できる。ここでは`InterlliJ IDEA 2019.3.2 (Community Edition)`を使用している。
 
-![](/blog/2020-02-09-producer-consumer-kafka-app/kafka-app_intellij_1.png)
-![](/blog/2020-02-09-producer-consumer-kafka-app/kafka-app_intellij_2.png)
+![](/imgs/producer-consumer-kafka-app/kafka-app_intellij_1.png)
+![](/imgs/producer-consumer-kafka-app/kafka-app_intellij_2.png)
 
 以下のようなproject dirが作成される。
 
@@ -189,7 +189,7 @@ public class ProducerSample {
 
 以下のように`Hello Kafka`が出力されるか確認する。
 
-![](/blog/2020-02-09-producer-consumer-kafka-app/kafka-app_intellij_3.png)
+![](/imgs/producer-consumer-kafka-app/kafka-app_intellij_3.png)
 
 
 ## 2. Running Producer app
@@ -267,19 +267,19 @@ Process finished with exit code 1
 ### 2-2. Runnning App on EC2
 先ほどのCodeをBuildし、JARファイルを作成する。[Package your application in a JAR - Help | IntelliJ IDEA](https://www.jetbrains.com/help/idea/packaging-a-module-into-a-jar-file.html)に具体的な方法が載っているので、詳細手順はこちらを参照 (なおMaven経由でBuildする場合はProject root dirにて、`mvn packag (-DskipTests)`を実行すれば良い)。
 
-![](/blog/2020-02-09-producer-consumer-kafka-app/kafka-app_intellij_4.png)
-![](/blog/2020-02-09-producer-consumer-kafka-app/kafka-app_intellij_5.png)
+![](/imgs/producer-consumer-kafka-app/kafka-app_intellij_4.png)
+![](/imgs/producer-consumer-kafka-app/kafka-app_intellij_5.png)
 
 
 Buildしたのちに、作成されたJARファイルをAMIから作成したEC2インスタンスに移動させ、対象のJARファイルをこれから実行しProducerのテストを行う。事前に以下のようにConsumerを起動しておく。
 
-```
+```text
 [ec2-user@ip-172-31-11-62 ~]$ kafka-console-consumer --bootstrap-server ip-172-31-14-76.ec2.internal:9092, ip-172-31-11-62.ec2.internal:9092, ip-172-31-6-79.ec2.internal:9092 --topic test-topic
 ```
 
 Consumer側の準備が整ったらProducerからPublishしてみる。
 
-```
+```text
 [ec2-user@ip-172-31-13-42 ~]$ java -cp ~/kafkaSampleApp.jar com.tomtongue.sample.kafkaapp.ProducerSample
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
@@ -295,7 +295,7 @@ Start to send messages...
 
 Consumer側で以下のようにmessageを取得できることも確認する。
 
-```
+```text
 [ec2-user@ip-172-31-11-62 ~]$ kafka-console-consumer --bootstrap-server ip-172-31-14-76.ec2.internal:9092, ip-172-31-11-62.ec2.internal:9092, ip-172-31-6-79.ec2.internal:9092 --topic test-topic
 Message sent from Producer: #0
 Message sent from Producer: #3
