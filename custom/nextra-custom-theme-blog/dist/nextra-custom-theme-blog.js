@@ -77,6 +77,11 @@ function Nav({navPages}) {
   const iconStyle={height: '30px', marginTop: '0', marginBottom: '0', marginLeft: '0.5rem', marginRight: '0.5rem'}
   return <div className="nav-line">
     <td className="nav-link">
+      <a href="https://books.tomtana.com/" className="nav-link">
+        <img src="/icons/books_tomtana.png" alt="" style={iconStyle}></img>
+      </a>
+    </td>
+    <td className="nav-link">
       <a href="https://github.com/tomtongue" className="nav-link">
         <img src="/icons/GitHub-Mark-120px-plus.png" alt="" style={iconStyle}></img>
       </a>
