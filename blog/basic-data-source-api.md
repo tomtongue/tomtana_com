@@ -1,9 +1,10 @@
 ---
 title: Basic of DataSource API in Spark
-date: 2020/10/3
-description: Understaning about Spark DataSources API.
-tag: spark, japanese
-author: tomtan@
+author: Tom
+authorURL: https://github.com/tomtongue
+authorImageURL: https://avatars1.githubusercontent.com/u/43331405?s=400&v=4
+tags: [spark]
+date: 2019-11-02
 ---
 
 # Basic of DataSource API in Spark
@@ -20,6 +21,8 @@ author: tomtan@
 6. [For SQLDatabases](#6-for-sqldatabases) - Reading & Writing, and QueryPushdown
 7. [For Text Files](#7-for-text-files)
 8. [Advanced Topics for Read/Write](#8-advanced-topics-for-readwrite) - File format & Compression, Reading & Writeing data in parallel, Writing complex types and Managing file size
+
+<!--truncate-->
 
 Sparkは様々なData Sourceに対応しており、以下の6つのData Sourceをcore (CSV, Json, Parquet, ORC, JDBC/ODBC Connections, Plain-text files)とし、その他Communityより作成されたものも使用できる。Community-basedなData Sourceとしては、Cassandra, HBase, MongoDB, Redshift, XMLなどがある。
 以下サンプルコードについては全てPySparkで記載している。

@@ -1,8 +1,8 @@
 ---
 title: Join operations in Spark
-date: 2019/9/5
 description: Details about join operations in Spark
-tag: spark, join, japanese
+date: 2019-10-03
+tag: [spark]
 author: tomtan@
 ---
 
@@ -16,10 +16,12 @@ author: tomtan@
 4. RDD Join
 5. Misc
 
+<!--truncate-->
+
 **Join**とは2つのData-set (*Left*と*Right*)における、1つ以上の**Key**を比較し、それぞれのデータを合わせることである。よく知られるJoin expressionとしては**Equi Join**がある。これはLeft-sideおよびRight-sideにおけるKeyを比較し、等しいものを合わせ、異なるKeyを含むRowは捨てるといったものである。SparkではEqui Join以外のJoinもサポートしており、それらについては以下に記載する。
 
 ## 1. DataFrame Join Types
-![](/imgs/spark-joins/join_operations.png)
+![](/assets/spark-joins/join_operations.png)
 
 1. [Inner Joins](#1-1-inner-joins)
 2. [Outer Joins](#1-2-outer-joins)

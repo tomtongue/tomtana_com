@@ -1,12 +1,11 @@
 ---
 title: Create Producer/Consumer Application for Kafka
 author: tomtan@
-date: 2020/2/2
 description: In this post, we'll create Producer/Consumer apps to communicate with Kafka.
-tags: kafka, japanese
+date: 2020-02-05
+tags: [kafka]
 ---
 
-# Create Producer/Consumer Application for Kafka
 
 ここでは[Setup Apache Kafka - Confluent ver. (JPver.)](https://v2.tomtongue.com/blog/setup-kafka)で作成したKafka clusterに対しPub/Subを行うProducer/Consumer applicationを作成する。簡単のためまずはLocal上でAppを開発し、その後Kafka Cluster構築時に作成したAMIをベースにEC2を起動し、EC2上で対象のAppを稼働させる。具体的には以下の内容を実施する。
 
@@ -14,6 +13,7 @@ tags: kafka, japanese
 2. Running Producer app
 3. Running Consumer app
 
+<!--truncate-->
 
 なお使用したMaven ver.は以下 (Mavenのinstallは省略する。[Maven – Installing Apache Maven](http://maven.apache.org/install.html)を参照)。
 
@@ -99,8 +99,8 @@ kafkaSampleApp
 ### Using InterlliJ IDEA
 InterlliJでもproject作成できる。ここでは`InterlliJ IDEA 2019.3.2 (Community Edition)`を使用している。
 
-![](/imgs/producer-consumer-kafka-app/kafka-app_intellij_1.png)
-![](/imgs/producer-consumer-kafka-app/kafka-app_intellij_2.png)
+![](/assets/producer-consumer-kafka-app/kafka-app_intellij_1.png)
+![](/assets/producer-consumer-kafka-app/kafka-app_intellij_2.png)
 
 以下のようなproject dirが作成される。
 
@@ -189,7 +189,7 @@ public class ProducerSample {
 
 以下のように`Hello Kafka`が出力されるか確認する。
 
-![](/imgs/producer-consumer-kafka-app/kafka-app_intellij_3.png)
+![](/assets/producer-consumer-kafka-app/kafka-app_intellij_3.png)
 
 
 ## 2. Running Producer app
@@ -267,8 +267,8 @@ Process finished with exit code 1
 ### 2-2. Runnning App on EC2
 先ほどのCodeをBuildし、JARファイルを作成する。[Package your application in a JAR - Help | IntelliJ IDEA](https://www.jetbrains.com/help/idea/packaging-a-module-into-a-jar-file.html)に具体的な方法が載っているので、詳細手順はこちらを参照 (なおMaven経由でBuildする場合はProject root dirにて、`mvn packag (-DskipTests)`を実行すれば良い)。
 
-![](/imgs/producer-consumer-kafka-app/kafka-app_intellij_4.png)
-![](/imgs/producer-consumer-kafka-app/kafka-app_intellij_5.png)
+![](/assets/producer-consumer-kafka-app/kafka-app_intellij_4.png)
+![](/assets/producer-consumer-kafka-app/kafka-app_intellij_5.png)
 
 
 Buildしたのちに、作成されたJARファイルをAMIから作成したEC2インスタンスに移動させ、対象のJARファイルをこれから実行しProducerのテストを行う。事前に以下のようにConsumerを起動しておく。

@@ -1,16 +1,16 @@
 ---
 title: Setup Apache Kafka - Confluent ver.
-date: 2020/2/2
 description: Let's setup a Kafka cluster!
+date: 2020-02-02
 author: tomtan@
-tags: kafka, japanese
+tags: [kafka]
 ---
-
-# Setup Apache Kafka - Confluent ver.
 
 ここではKafka clusterやKafka clientなどのsetupを行う。具体的には以下のような構成で行う。
 
-![](/imgs/setup-kafka/kafka-cluster.png)
+![](/assets/setup-kafka/kafka-cluster.png)
+
+<!--truncate-->
 
 Kafka自体には以下のようなDistributionがあり、今回はConfluent dist.を先に確認する (この後Community ver.のclusterも立ち上げる)。
 * [Community ver.](https://kafka.apache.org/downloads) from Apache Software Foundation
