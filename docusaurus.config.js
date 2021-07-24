@@ -16,8 +16,8 @@ module.exports = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'tomtana', // Usually your repo name.
+  organizationName: 'tomtongue', // Usually your GitHub org/user name.
+  projectName: 'tomtana_com', // Usually your repo name.
   themeConfig: {
     hideableSidebar: true,
     prism: {      
@@ -33,18 +33,24 @@ module.exports = {
         src: 'img/tomtana_com_icon.png',
       },
       items:[
-        {to: 'about-me', label: 'About Me!', position: 'left'},
+        {to: 'about-me', label: '👦🏻About me', position: 'left'},
         {
-          href: 'https://github.com/tomtongue',
+          href: 'https://books.tomtana.com',
           position: 'right',
-          className: 'header-github-link',
-          'aria-label': 'GitHub repository',
+          className: 'header-booktan-link',
+          'aria-label': 'books_tomtana_com'
         },
         {
           href: 'https://www.linkedin.com/in/tomohiro-tanaka-bb186039/',
           position: 'right',
           className: 'header-linkedin-link',
           'aria-label': 'LinkedIn',
+        },
+        {
+          href: 'https://github.com/tomtongue',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ]
     },
