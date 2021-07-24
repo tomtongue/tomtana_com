@@ -15,13 +15,13 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-color-primary: #1263E8;
+  --ifm-color-primary-dark: #0C4FDE;
+  --ifm-color-primary-darker: #053AD1;
+  --ifm-color-primary-darkest: #0027C2;
+  --ifm-color-primary-light: #2580F3;
+  --ifm-color-primary-lighter: #7BB3F5  ;
+  --ifm-color-primary-lightest: #ADCFF5;
   --ifm-code-font-size: 95%;
 }
 
@@ -56,7 +56,14 @@ html[data-theme='light'] div.react-toggle-track {
 }
 
 /* Page column container width */
+.container.container.margin-vert--lg {
+  max-width: max-content;
+}
 
+/* Artcile */
+article.margin-bottom--xl {
+  margin-bottom: 2rem !important;
+}
 
 /* Font */
 @font-face {
