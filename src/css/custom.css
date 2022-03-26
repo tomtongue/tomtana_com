@@ -15,14 +15,25 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #1263E8;
-  --ifm-color-primary-dark: #0C4FDE;
-  --ifm-color-primary-darker: #053AD1;
-  --ifm-color-primary-darkest: #0027C2;
-  --ifm-color-primary-light: #2580F3;
-  --ifm-color-primary-lighter: #7BB3F5  ;
-  --ifm-color-primary-lightest: #ADCFF5;
+  --ifm-color-primary: #2477c5;
+  --ifm-color-primary-dark: #206bb1;
+  --ifm-color-primary-darker: #1f65a7;
+  --ifm-color-primary-darkest: #19538a;
+  --ifm-color-primary-light: #2883d8;
+  --ifm-color-primary-lighter: #3289da;
+  --ifm-color-primary-lightest: #509adf;
   --ifm-code-font-size: 95%;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #419be8;
+  --ifm-color-primary-dark: #278de5;
+  --ifm-color-primary-darker: #1f89e4;
+  --ifm-color-primary-darkest: #1a81d9;
+  --ifm-color-primary-light: #5ba9eb;
+  --ifm-color-primary-lighter: #69b0ed;
+  --ifm-color-primary-lightest: #90c5f2;
 }
 
 .docusaurus-highlight-code-line {
@@ -39,55 +50,6 @@ html[data-theme='light'] .navbar {
 
 html[data-theme='dark'] .navbar {
   background-color: rgba(25, 26, 27, 0.8);
-}
-
-/* Queued container background color */
-html[data-theme='light'] .queued {
-  background-color: #FAFAFA;
-}
-
-html[data-theme='dark'] .queued {
-  background-color: #000000;
-}
-
-/* Toggle color */
-html[data-theme='light'] div.react-toggle-track {
-  background-color: #49D863;
-}
-
-/* Page column container width */
-.container.container.margin-vert--lg {
-  max-width: inherit;
-}
-
-/* Artcile */
-article.margin-bottom--xl {
-  margin-bottom: 2rem !important;
-}
-
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: subpixel-antialiased;
-  font-variation-settings: 'wght' 400;
-  font-variant: common-ligatures contextual;
-  letter-spacing: -0.02em;
-}
-b,
-strong,
-h3,
-h4,
-h5,
-h6 {
-  font-variation-settings: 'wght' 650;
-}
-h1 {
-  font-variation-settings: 'wght' 820;
-}
-h2 {
-  font-variation-settings: 'wght' 700;
 }
 
 /* Navbar Link */
@@ -123,15 +85,47 @@ html[data-theme='dark'] .header-github-link:before {
   background-repeat: no-repeat;
 }
 
-/* Ref: How to change an icon to svg-format: https://stackoverflow.com/questions/41405884/svg-data-image-as-css-background */
-.header-booktan-link:hover {
-  opacity: 0.6;
+
+/* Queued container background color */
+html[data-theme='light'] .queued {
+  background-color: #FAFAFA;
 }
 
-.header-booktan-link:before {
-  content: '';
-  display: flex;
-  width: 24px;
-  height: 24px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 24 24'%3E%3Cimage xlink:href='data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAABmRSURBVHic7d15cJz3fd/x77O7WIAgQPAAD1GUREoydXBsSpZM6ogdq7LVxI5P1RMnHbsTZzqppx2lcT2N20kyPcadaTL+w0c7E6ep6/6TyHbjU27lTixZVhQ7hyPHOixeIkVRtCSKBwAC2MXuPv0jsWO5UgCSAH7P4vd6/U/xM9ASz3t3n6MIKmX/3vXXRr3x6jLKq4sydkYRl0cZ66KINVHGSEQMLebfV9SK3vbLttcW878JsIyei4hHiijurs1N/Y/is4+2Uw/qF0XqAbk78lNj69rd5juLKG4vo7wtIrYs599f1IrYftn25fwrAZZEGbGvV5bvHPyDP3809ZZ+IAASKN8V9QNHx98URfHeiPi5WOR39edCAAArzOl62b25+IO//H7qIVUnAJbRX9wQA2ubm36hjPLfRMTVqfdECABg5SnK+G7tqj97dfHvopd6S5X57ncZlBHF/ls2vWesuelAGeWnoyIHf4CVqCxid3ffnjtT76i6RuoBK93BPeM7DzSKT0RZvjH1FoB8lO+MiM+mXlFlPgFYImVEsf/mjR/q1YtHogwHf4BlVJTFNak3VJ1PAJbAEzdsHd8/MPfpIuJNqbcA5KgsYkPqDVUnABbZwZs3v7IXc1+NiG2ptwDAy/EVwCLad9Pmvb3o3RcO/gBUnABYJAdu3vgzRdG7L8LHTgBUnwBYBPtu2ry3jPhcRKxKvQUAFkIAXKD9t27ZVRTlVyNideotALBQAuACPHrzmvXR69wTUa5PvQUAzoUAOE9lRNGM5u9HFJel3gIA50oAnKcDN43/y4ji7al3AMD5EADnYf8tm66IovhPqXcAwPkSAOehKMuPRsJH+ALAhRIA52jfTZveWUa8OfUOALgQAuAclBG1ouj9h9Q7AOBCeRbAOThw88Y7I2JX6h0AcKF8AnAuivj11BMAYDEIgAV64taNr40ybki9AwAWgwBYoFq3eE/qDQCwWATAAjz5+u1DUZTvSr0DABaLAFiATnvmH0bE2tQ7AGCxCICFKHtvSD0BABaTAFiQ8rbUCwBgMQmAeRy4ZfOmiOLa1DsAYDEJgHn0uuXuiChS7wCAxSQA5lGrlVel3gAAi00AzKOMEAAArDgCYB5FxI7UGwBgsQmAefSKGEu9AQAWmwCYR9GL0dQbAGCxCYD5FAIAgJVHAMyvmXoAACw2AQAAGRIAAJAhAQAAGRIAAJAhAQAAGRIAAJAhAQAAGRIAAJAhAQAAGRIAAJAhAQAAGRIAAJAhAQAAGRIAAJAhAQAAGRIAAJAhAQAAGRIAAJAhAQAAGRIAAJChRuoBUBnNWhRXjEaxdThiuB7RKFIvgoXplBHTnSiPTUd5cCpirpd6EX1AAEBEFNeORe2nNkUM1VNPgfNW7FobMdOJ3jefi/L7E6nnUHECgOwVezdEbe/G1DNgcaxqRO2OrdEbHYjyz19IvYYKcw4AWSu2r47aHgd/Vp7aTRujuHQ49QwqTACQteKWTRG+6mclKv729Q0vQwCQr/XNKMYHU6+AJVNsGooYG0g9g4oSAGTLwZ8cFBuHUk+gogQA+RpyDiwZWOXKFl6aACBjZeoBAMkIAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAgX2XqAbAMel7ovDQBQL7OdlIvgKXndc7LEABkqzw+41MAVrYyovzBbOoVVJQAIF8z3SgPTaVeAUumPDARMdtNPYOKEgBkrfcnz0W0/IJkBWr1ovcnz6deQYUJAPJ2uh29rz4T0e6lXgKLp9WN3leejpiYS72EChMAZK88eja6f3j4b74OKJ0UQB8ryygPTkb3D49EeWw69RoqrpF6AFTC6fbfvGMarkdx0XDEyEBEo0i9ChamU0ZMzUX5zHTEjK+0WBgBAD9uuhvlwcnUKwCWnK8AACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDAgAAMiQAACBDjdQDIDdzG7bG1A1vjNnLr4vO2o1RDg6lnsQSKVqz0Tj9XAwdfDhG/vJrMXDyB6knwY8IAFgmZb0RJ9/y/jjzundF2RhIPYdl0t56RUxfe3Oc+tlfjrX33x3r7vndKLrd1LNAAMByKBsDcfxXPhIzV70m9RQSKRvNOPWG90Tr4p2x5ZMfjKLbST2JzDkHAJbBiTt/zcGfiIiYvmZvvPD2u1LPAAEAS6299RUxccvbUs+gQs689s6Yu+jy1DPInACAJTZxy1sjCv/U+DG1Wkzc9JbUK8ic30qwxGZ23pB6AhU0vfPG1BPInACAJdYZ25h6AhXUXbc59QQyJwBgiTnbm5dSdNqpJ5A5AQBLrPHCsdQTqKDGCa8L0hIAsMSGH/vT1BOooOHHvS5ISwDAEhv75h9FrTWdegYVUmtNx5qHvpR6BpkTALDE6lOnYv0X/0vqGVTIhs9/NOqTJ1PPIHMCAJbB2IN/FOvu/VREWaaeQkplGev+93/z7p9K8CwAWCbr7/lkDB55LE6+465ob7wk9RyWWfO5I7Hh8x+L4UcfSj0FIkIAwLJa/ciDsfqxh2J2+6ti5srd0V0z7smAK1jRmYv6xIlYdeDhGHryexFlL/Uk+BEBAMut14uhQw/H0KGHUy8BMuYcAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAw1Ug+A3LQuvTYm974pZi7fHd2xDRE1/wxXrF4n6mdeiFUHH47Rb98Tg0e/n3oR/IjfPLBMeoOr4vl3fyimXv3GiKJIPYdl0h1ZF+2Lr4wzr70zRv/i3hi/+7ej1p5JPQsEACyH3uBwHPvV/xrtbVelnkIqRRGTr/mZaG++LLZ+7J+LAJJzDgAsg+d/4d86+BMREa1Lr4kT7/711DNAAMBSm738VTH16ttTz6BCJm+4I1qX7Uo9g8wJAFhik3venHoCVVMUMbn3TalXkDkBAEts9srrUk+ggmauvD71BDInAGCJdcbGU0+ggrwuSE0AwBIr2rOpJ1BBNa8LEhMAsMQGnjuaegIVNPC81wVpCQBYYsOPPJh6AhXkdUFqAgCW2NhDX4z62TOpZ1Ah9alTseahL6WeQeYEACyx2sxkjH/2dyLKMvUUqqAsY+Pdvx212bOpl5A5AQDLYOQ7fxzjn/tIFN1u6ikkVHQ7sfHu/xyrv3t/6ingWQCwXMa++b9i6OgTceJt/yJmr9ideg7LbOjgX8X45z8Rg089lnoKRIQAgGU1ePiRuPij/yzmxrfF7OWvis66zVEOrko9iyVStGaicerZGDr4cAy88EzqOfAiAgASGDjxdAyceDr1DCBjzgEAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIkAAAgAwJAADIUCP1AJZRUbR7ZTHTqxXT3aI2VxTRLYqIUzOzO1JPA1hMZRQDqTdUnQBYQcoiep2icbxVq0/P9KLe6naHpzvd0Zm57qp2t1vrlWUzIpoRMfaiP/jC2SR7AZbKqoH6eOoNVScA+lynVj9+tmhMnZrrrj8101rf7rYvTr0JgOoTAH2mLKI3W2s+eWKuN3Jytr1xttO+KPUmAPqPAOgT3Ub96RPdeve5mdmLp9tTV6TeA0B/EwAVd7bR3H98Zu6iFyZmtqXeAsDKIQCqqTxbbx54enZu2+mJqVekHgPAyiMAKmaq3tz/1HTrssmWAz8AS0cAVES33nj+WCfK46cc+AFYegIgtaKYO1kMPnX4zNTlc71ekXoOAHkQAAm1a42nDszMbZlsTTirH4BlJQASOVMf3L//zNQrur0y9RQAMiQAlltRzDzdq585dmrSd/0AJCMAllGnUT/+xFRnfKrd2pJ6CwB5EwDLpF1rPPX9ydbFM3PdeuotACAAlsFsrXHo8cnWjna36yx/ACpBACyxs/XBfY+fntrZLZ3sB0B1CIAlNFsf2P/Y6amdPQd/ACqmlnrAStWqNw49emb6Sgd/AKpIACyBTq1x5PGJ1vZOr/SdPwCVJAAWWa9Wf/axs61trW7XzxaAynKQWkxFMXegVY661A+AqhMAi+iZsvHsqZnZ4dQ7AGA+AmCRTNea+45OnN2WegcALIQAWAS9Wv3ZJ6Zm3NsfgL4hABbBwblyuN1xlz8A+ocAuEBT9eYTJ8/OjqbeAcDfKYrCTVjmIQAuQDdqZw9NzVyZegcALzZQq7dSb6g6AXABno36KZf8AVTPcHPgUOoNVScAzlO73jjy9MS0s/4BKmh0Vf3jqTdUnQA4T8fbsboMXzEBVM2m1cNH93z9qd9LvaPqBMB56DbqR589OzOeegcALzY61JzZNDJ6c+od/UAAnIdjc0XTu3+A6iiKiItGVu+7fO3mHdd9fd+x1Hv6QSP1gH7TKxrPPjs5szn1jvPVrNdjcGgo6o2BGBgaigi3LwD6U3fq9MlGUcwM1mtPrBlsfOT6+458NeKZ1LP6hgA4R8d7tU6v7J93/2vHxmL91dfFyN43xsBNd0TtYlctAivDVeP1Dak39DMBcC6Kov3c9MzW1DPm06jXYtvuPbHuH/+raNx4e+o5AFSQADgHk7Xm4XantTP1jpdTK4rYvud1sf4DH41iy6Wp5wBQYQLgHJyY61b2zP/168dj+2/9btSvvy31FAD6gABYqKJ2+sTZmfWpZ7yUHXteFxs/fHeUzcHUUwDoEy4DXKBTtYHnq3byXxFFXPOPfjnGf+cLDv4AnBOfACzQmblupd79F0XEte/91Rh+32+lngJAH/IJwMKUp2Za61KP+HFX/dwvOvgDcN4EwAK0GwNH2t1uZX5W265+ZYx+8BOpZwDQxypzUKuyyah1Um/4odHVq2PzR76QegYAfU4ALMBEq1OZu03teP+/j9pIpb6NAKAPCYAFmJybW5N6Q0TERZftiMG3vC/1DABWAAEwj7IoZmfnOvXUOyIiNv/T30w9AYAVQgDMY67eOFOFy/83btocA699e+oZAKwQAmAeM2VRieflbrz9naknALCCCIB5tMpyOPWGWlHE6nd/IPUMAFYQATCPVjdGUm9Yu35DxNrKXIgAwAogAObRKctm6g1rr9yVegIAK4wAmEevLAdSbxi6QgAAsLgEwDw63fQBMHDl7tQTAFhhBMA8etFL/sTExsaLUk8AYIURAPPodNMHQKyp1JOIAVgBBMA8elEmvw9AMTCUegIAK4wAAIAMCQAAyJAAAIAMCQAAyJAAAIAMCQAAyJAAAIAMCQAAyFD6u9wxr25EFGXqFQCsJAKgD0zM1qI348MaABaPowoAZEgAAECGBAAAZEgAAECGBAAAZEgAAECGBAAAZEgAAECGBAAAZEgAzKNWFL3UG6I9nXoBACuMAJhHvVbrpN4QEy+kXgDACiMA5tGoFe3UG+L44dQLAFhhBMA8akUteQD0Dn039QQAVhgBMI96FDOpN7QPPZp6AgArjACYR6NeTKXeMHn4sdQTAFhhBMA8BuuNQ6k3TExORu0pEQDA4hEA86jV6pX4Ar77mY+kngDACiIA5jEQ8UDqDRERJ799b0Qv/S0JAFgZBMA8NtTKB2pFkXpGTExNRfGFj6WeAcAKIQDmseP+w7OrBhrJLwWMiDj52Y9F2e2mngHACiAAFmCk2TyWekNExOnTJ6P4vX+degYAK4AAWIDhgYH7Um/4oWP3fDpqT/516hkA9DkBsADDzfj91Bt+qN3pxMnfeEcUc7OppwDQxwTAAlz/9SMPDQ800j8U6G+dOvlCzPzaba4KAOC8CYAFWjM4mPyGQD/u+MHHo/Obb009A4A+JQAWaHhw4EupN/yko995MFofeH0UnbnUUwDoMwJggVbVig8367Uy9Y6f9MzjD8eZX9oVNc8LAOAcCIAFuv7+w6fHV696PPWOl/LCiefi6bt+OopP/UZEWblGAaCCBMA5WDNY/3jqDS+nNTcXhz7ziTjz3qui9n//Z+o5AFRc+nvc9pEyovb56zfMTrc7A6m3zGf9+vEY++l3RPGuD0a5bnPqOQCL7tZLK3Cf9j7mh3eOHrj1knufOj1xR+odC1Wv1WLtho2xeuf1MXDVayKuek2U214R5fqLUk8DuCAC4ML44Z2j791xxSWPHT95ZK7X6/uf3UC9Hv75AH2rLMt6reiNNJsnRoeaXxjbPHrXrs8+Wolnt/QDv/7PwzduveTBo6cnbk29A4C/s2awObt1ZORtNz7w5NdSb+kHTgI8D2PFwPvqNe0EUCUTrfbQodNn/s/DP33Zbam39AMBcB6ue/DQvs0jw99JvQOAF2t3u8XTUzNf/kxEPfWWqhMA52nD4Kp/0qxV78ZAALk7Pdtafcnrtn849Y6qEwDnaff9Bx+5eGzkc6l3APD/m2y1fj71hqoTABeg3Tj6i2NDg2dT7wDgxWbnOm6AMg8BcAFuuz86G1evusuldADV0u51m6k3VJ0AuEA3PXDkv28ZWe1JPAD0FQGwCMbXrLpttNlspd4BAAslABbB7q8dfG7ryOqfr/suAIA+IQAWyWu+efiL2zeMfSr1DgBYCAGwiG7+xpH3XTS6+mDqHQAwHwGwyLaMrduzbnjwTOodAPD3EQCLbNe9j568eHTtrjVDzZnUWwDg5QiAJXDd1/cdu3T12K3DzUYn9RYAeCkCYIlc98CBv7p0dM2bm/V6L/UWAPhJAmAJ3fjAk1/buW70DcPNxlzqLQDw4wTAErvuG0fu2zE2umfNoHMCAKgOAbAMrr//8MPbtoxcs36VqwMAqAYBsExe/dUnj1y2YePlm1YPP5V6CwAIgGW0695HT97xZ8cvu3zDuk+6bTAAKQmABG554PCv7Ny07q0eIARAKgIgkRu+/uSXL940vmOLWwcDkIAASOjGex8//oZvPXPlK8bX37VmqDmbeg8A+RAAFbD3G09+fOvWgQ3b143d06gVZeo9AKx8zkSrmO/etn3vidn2p5+dnL6qV2oBgPMxOticfdt3nl+VekeV+QSgYnbfd/jbt//pM1fv2rj2pq2jI991tQDAuRseaDybekPVCYCK2n3f4W//g28du+7a8Q2v3DY2+q1BzxQAWLCRgebnUm+oOm8v+8STr98+9INe70NTs3O/dGJm9tJuTw8AvJTRoebMmtHn19x2f3gi699DAPSh791xxSWTM3P/cbLVvuPMbGtLu9vz/xEgIpr1WnnFhrGfveG+w/em3lJ1Dhx97r7XR2N17Hh3u9N991SrvWei1RoXBECORpoD7UvWr7nzhj8+9JXUW/qBA8UK9Nev3351K4rbW53unrlu95p2t3NJpyxXdbsx0Ol1B7q9st7p9WpdVxkAfW6wXu+tHmqeXtNsfmVoXef9N375menUm/rF/wNB/xAB0KUmegAAAABJRU5ErkJggg==' height='100%25' width='100%25'/%3E%3C/svg%3E") no-repeat ;
+html[data-theme='dark'] .queued {
+  background-color: #000000;
+}
+
+/* Artcile */
+article.margin-bottom--xl {
+  margin-bottom: 2rem !important;
+}
+
+/* Font */
+body {
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-variation-settings: 'wght' 400;
+  font-variant: common-ligatures contextual;
+  letter-spacing: -0.01em;
+}
+b,
+strong,
+h3,
+h4,
+h5,
+h6 {
+  font-variation-settings: 'wght' 650;
+}
+h1 {
+  font-variation-settings: 'wght' 820;
+}
+h2 {
+  font-variation-settings: 'wght' 700;
+}
+
+/* Page column container width */
+.container.container.margin-vert--lg {
+  max-width: 100%;
 }

@@ -1,33 +1,31 @@
 ---
 title: Monitoring Spark on EMR with InfluxDB and Grafana
-author: Tom
+authors: tomtan
 date: 2020-04-05
-authorURL: https://github.com/tomtongue
-authorImageURL: https://avatars1.githubusercontent.com/u/43331405?s=400&v=4
 tags: [emr, spark, influxdb, grafana]
+keywords: ["emr", "spark", "influxdb", "grafana"]
 ---
 
 In this post, we configure and visualize Spark metrics (e.g. Executor JVM Heap usage) for Spark application running on Amazon EMR (hereafter, EMR) using InfluxDB and Grafana as follows. 
 
-![](/assets/monit-spark-w-influxdb-grafana/monit-spark-w-influxdb-grafana_overview.png)
-
-## ToC
-1. [Setup InfluxDB on Amazon EC2](#1-setup-influxdb-on-amazon-ec2)
-2. [Setup Grafana on Amazon EC2](#2-setup-grafana-on-amazon-ec2)
+## What we will do
+1. [Setting up InfluxDB on Amazon EC2](#1-setup-influxdb-on-amazon-ec2)
+2. [Setting up Grafana on Amazon EC2](#2-setup-grafana-on-amazon-ec2)
 3. [Configuring Spark Metrics](#3-configuring-spark-metrics)
 4. [Monitoring Spark Application running on EMR](#4-monitoring-spark-application-running-on-emr)
 
 <!--truncate-->
 
-### Condition
+### Setting up the base resources
+You need to set up the following resources to walk through this post contents.
 * EMR (Release Label): emr-5.27.0
     * Spark 2.4.4
     * Hadoop 2.8.5
 * Amazon Linux 2 instance (ami-0a887e401f7654935) was used in us-east-1 for InfluxDB and Grafana. 
 * Used dataset for Spark application: [Amazon Customer Reviews Dataset](https://s3.amazonaws.com/amazon-reviews-pds/readme.html)
 
-## 1. Setup InfluxDB on Amazon EC2
-In this post, we skip the setup of EC2 instance. After login the EC2 instance through SSH, install InfluxDB as follows (Ref: [Installing InfluxDB OSS](https://docs.influxdata.com/influxdb/v1.7/introduction/installation/#installing-influxdb-oss)):
+## 1. Setting up InfluxDB on Amazon EC2
+We won't see how to setup of EC2 instance. After login the EC2 instance through SSH, install InfluxDB as follows (Ref: [Installing InfluxDB OSS](https://docs.influxdata.com/influxdb/v1.7/introduction/installation/#installing-influxdb-oss)):
 
 ```text
 [ec2-user@ip-172-31-7-156 ~]$ cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
@@ -69,7 +67,7 @@ Then, start InfluxDB and check if it is running:
 influxdb  4605 89.0  0.2 1041040 35612 ?       Ssl  12:00   0:06 /usr/bin/influxd -config /etc/influxdb/influxdb.conf
 ```
 
-## 2. Setup Grafana on Amazon EC2
+## 2. Setting up Grafana on Amazon EC2
 
 As same as the previous section about InfluxDB, you’ll add repository of Grafana, install and start Grafana-server (Ref: [Install on RPM-based Linux | Grafana Labs](https://grafana.com/docs/grafana/latest/installation/rpm/))
 
@@ -102,7 +100,7 @@ grafana   5251  2.1  0.2 1113740 41856 ?       Ssl  12:10   0:00 /usr/sbin/grafa
 ```
 
 If possible, you should change the default configuration of username and password for Grafana. After this setup, you can access the Grafana-server through specified port number and then you can see following image:
-![](/assets/monit-spark-w-influxdb-grafana/monit-spark_setup_grafana_1.png)
+![](fig/2020-04-05-monit-spark-w-influxdb-grafana/monit-spark_setup_grafana_1.png)
 
 ## 3. Configuring Spark Metrics
 In this section, you configure Spark metrics with login EMR via SSH. After launching EMR, login the Master Node and open `/etc/spark/conf/metrics.properties`. you can configure Spark metrics by adding [`Sink` class](https://github.com/apache/spark/blob/master/sql/core/src/main/scala/org/apache/spark/sql/execution/streaming/Sink.scala) to this property file. In this time, we'll configure pushing metrics to InfluxDB from Spark application, therefore add some InfluxDB configuration as follows:
@@ -151,7 +149,7 @@ After completion of Spark metrics, download jar files from following links and p
 ## 4. Monitoring Spark Application running on EMR
 In this section, you write Spark code, and then run the code through `spark-submit`. After that, you visualize Spark metrics (in this time, we'll see JVM Heap metrics) using Grafana (query to InfluxDB).
 
-### 4-1. Create and Run Spark Code
+### 4-1. Creating and Running the Spark app
 In this section, we'll use following PySpark code as an exmple.
 
 ```py
@@ -195,7 +193,7 @@ $ nohup spark-submit \
 partition_by.py >> app.log &
 ```
 
-### 4-2. Query for InfluxDB and Monitoring Spark App
+### 4-2. Querying for InfluxDB and Monitoring Spark App
 After confirmation of running Spark application, check if Spark application pushing metrics at first. To check this, you need to access the EC2 instance via SSH and run a query for InfluxDB as follows.
 
 ```text
@@ -219,13 +217,16 @@ application_1581969854052_0003.1.CodeGenerator.generatedMethodSize
 ```
 
 You can confirm stored metrics in InfluxDB, then access to Grafana running on the EC2 intance. You'll add InfluxDB as a data source (see [How to setup Grafana for InfluxDB](how-to-setup-grafana-for-influxdb)) and then create a panel to visualize Spark metrics for the Dashboard. In that page, you can set a query to get metrics which are pushed to InfluxDB by the Spark application as follows.
-![](/assets/monit-spark-w-influxdb-grafana/monit-spark_query_1.png)
-Additionally, add the title and description of the panel.
-![](/assets/monit-spark-w-influxdb-grafana/monit-spark_query_2.png)
-After those configuration, save this panel from "save" button in the upper side of the page. Finally you can monitor metrics of Spark driver and executor JVM Heap usage!
-![](/assets/monit-spark-w-influxdb-grafana/monit-spark_query_3.png)
 
-## Supplement
+![](fig/2020-04-05-monit-spark-w-influxdb-grafana/monit-spark_query_1.png)
+
+Additionally, add the title and description of the panel.
+![](fig/2020-04-05-monit-spark-w-influxdb-grafana/monit-spark_query_2.png)
+
+After those configuration, save this panel from "save" button in the upper side of the page. Finally you can monitor metrics of Spark driver and executor JVM Heap usage!
+![](fig/2020-04-05-monit-spark-w-influxdb-grafana/monit-spark_query_3.png)
+
+## Appendix
 ### How to setup Grafana for InfluxDB
 After login Grafana, you need "data source" firstly. You can add the data source through following steps:
 
@@ -234,7 +235,7 @@ After login Grafana, you need "data source" firstly. You can add the data source
 3. Go to "Add data source" and then select "InfluxDB"
 4. Just specify "URL" and "Database" (as follows), and move on "Save & Test"
 
-![](/assets/monit-spark-w-influxdb-grafana/monit-spark_setup_grafana_2.png)
+![](fig/2020-04-05-monit-spark-w-influxdb-grafana/monit-spark_setup_grafana_2.png)
 
 After adding data source, you can add a panel to the dashboard by clicking "+" > "Dashboard" > "Add Query" in the left-bar.
 

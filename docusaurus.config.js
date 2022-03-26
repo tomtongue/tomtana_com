@@ -6,9 +6,11 @@
  *
  * @format
  */
+// @ts-check
+// Note: type annotations allow type checking and IDEs autocompletion
 
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
-module.exports = {
+/** @type {import('@docusaurus/types').Config} */
+const config = {
   title: 'tomtana.com',
   tagline: 'Exploring unknown!',
   url: 'https://tomtana.com',
@@ -16,74 +18,71 @@ module.exports = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'tomtongue', // Usually your GitHub org/user name.
+  organizationName: 'tomtan', // Usually your GitHub org/user name.
   projectName: 'tomtana_com', // Usually your repo name.
-  themeConfig: {
-    hideableSidebar: true,
-    prism: {      
-      theme: require('prism-react-renderer/themes/github'),
-      darkTheme: require('prism-react-renderer/themes/dracula'),
-      additionalLanguages: ['java', 'scala', 'swift', 'rust', 'python']
-    },
-    navbar: {
-      hideOnScroll: true,
-      title: 'Coffeeholic!',
-      logo: {
-        alt: 'be coffeeholic',
-        src: 'img/tomtana_com_icon.png',
-      },
-      items:[
-        {to: 'about-me', label: '👦🏻About me', position: 'left'},
-        {
-          href: 'https://books.tomtana.com',
-          position: 'right',
-          className: 'header-booktan-link',
-          'aria-label': 'books_tomtana_com'
-        },
-        {
-          href: 'https://www.linkedin.com/in/tomohiro-tanaka-bb186039/',
-          position: 'right',
-          className: 'header-linkedin-link',
-          'aria-label': 'LinkedIn',
-        },
-        {
-          href: 'https://github.com/tomtongue',
-          position: 'right',
-          className: 'header-github-link',
-          'aria-label': 'GitHub repository',
-        },
-      ]
-    },
-    colorMode: {
-      respectPrefersColorScheme: true,
-      switchConfig: {
-        darkIcon: '●',
-        lightIcon: '○'
-      }
-    },
-    footer: {
-      style: 'light',
-      copyright: `Copyright © ${new Date().getFullYear()} tomtan. Built with Docusaurus.`,
-    },
-  },
+
   presets: [
     [
-      '@docusaurus/preset-classic',
-      {
+      'classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
         docs: false,
         blog: {
           path: './blog',
           routeBasePath: '/',
           showReadingTime: true,
-          blogTitle: 'Docusaurus blog!',
-          blogDescription: 'A Docusaurus powered blog!',
+          editUrl:
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           postsPerPage: 20,
-          blogSidebarCount: 20,
+          blogSidebarCount: 20
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+        },
+      }),
     ],
   ],
+
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      hideableSidebar: true,
+      prism: {      
+        theme: require('prism-react-renderer/themes/github'),
+        darkTheme: require('prism-react-renderer/themes/nightOwl'),
+        additionalLanguages: ['java', 'scala', 'swift', 'rust', 'python']
+      },
+      navbar: {
+        title: 'Coffeeholic',
+        logo: {
+          alt: 'be coffeeholic',
+          src: 'img/tomtana_com_icon.png',
+        },
+        items: [
+          {to: 'about-me', label: '👦🏻About me', position: 'left'},
+          {
+            href: 'https://www.linkedin.com/in/tomohiro-tanaka-bb186039/',
+            position: 'right',
+            className: 'header-linkedin-link',
+            'aria-label': 'LinkedIn',
+          },
+          {
+            href: 'https://github.com/tomtongue',
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
+          },
+        ],
+      },
+      footer: {
+        style: 'light',
+        copyright: `Copyright © ${new Date().getFullYear()} tomtan. Built with Docusaurus.`,
+      },
+    }),
 };
+
+module.exports = config;
